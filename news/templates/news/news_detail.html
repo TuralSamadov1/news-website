@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ news_item.title }}</title>
+</head>
+<body>
+
+    <header>
+        <!-- Navigation and other elements go here -->
+    </header>
+
+    <section>
+        <h1>{{ news_item.title }}</h1>
+        <p><strong>Category:</strong> {{ news_item.category }}</p>
+        <p><strong>Published on:</strong> {{ news_item.published_date }}</p>
+        <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}" style="width: 100%; max-width: 600px;">
+        <p>{{ news_item.content }}</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your News Site. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

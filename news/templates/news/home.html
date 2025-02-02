@@ -1,0 +1,64 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your News Site</title>
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img src="{% static 'assets/images/logo.png' %}" alt="Logo" width="50"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Lifestyle</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Foods</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Travel</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="container mt-5">
+            <h1 class="text-center">Welcome to Your News Site</h1>
+            <div class="row">
+                {% for news_item in latest_news %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ news_item.image.url }}" class="news-image" alt="{{ news_item.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ news_item.title }}</h5>
+                            <p class="card-text">{{ news_item.summary }}</p>
+                            <a href="{% url 'news_detail' id=news_item.id %}" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 Your News Site. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
